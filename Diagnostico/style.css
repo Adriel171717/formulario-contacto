@@ -1,0 +1,187 @@
+body {
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    color: hsl(187, 24%, 22%);
+    background-color: hsl(148, 38%, 91%);
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: hsl(0, 0%, 100%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos base para el contenedor */
+.container2 {
+    border: 1px solid hsla(186, 15%, 59%, 0.404); /* Borde gris */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px;
+    background-color: hsl(0, 0%, 100%); /* Fondo blanco */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave */
+    margin-left: 0;
+    padding-left: 5px;
+    align-items: center;
+}
+
+
+
+/* Cambiar el color del contenedor cuando el radio está seleccionado */
+.container2:has(input[type="radio"]:checked) {
+    background-color: hsl(145, 38%, 91%); /* Fondo verde con transparencia */
+    border-color: hsl(164, 38%, 57%); /* Borde verde */
+}
+
+/* Ocultar el radio button nativo */
+.form-check-input1 {
+    appearance: none; /* Eliminar el estilo por defecto */
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(186, 15%, 59%); /* Borde gris */
+    border-radius: 50%; /* Forma circular */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-right: 8px; /* Espacio entre el radio button y el texto */
+    position: absolute;
+}
+
+/* Ocultar el círculo del radio button cuando está seleccionado */
+.container2:has(input[type="radio"]:checked) .form-check-input1 {
+    display: none; /* Ocultar el círculo */
+}
+
+/* Estilos para el ícono del radio button */
+.radio-icon {
+    position: relative;
+    width: 20px;
+    height: 23px;
+}
+
+/* SVG activo (oculto por defecto) */
+.radio-icon .selected-icon {
+    display: none; /* Ocultar el SVG activo por defecto */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Sobreponer el SVG al radio button */
+}
+
+/* Mostrar el SVG activo cuando el radio está seleccionado */
+.container2:has(input[type="radio"]:checked) .radio-icon .selected-icon {
+    display: block; /* Mostrar el SVG activo */
+}
+
+/* Estilos para el label */
+.form-check-label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el ícono y el texto */
+}
+
+/* Cambio de color del contenedor cuando el radio está seleccionado */
+.form-check-input:checked {
+    background-color: hsl(169, 82%, 27%);
+    /* Verde más brillante */
+    color: white;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.required-asterisk {
+    color: hsl(169, 82%, 27%); /* Color verde */
+    font-weight: bold; /* Solo el asterisco puede ser bold si lo prefieres */
+}
+
+
+.invalid-feedback {
+    display: none;
+    color: hsl(0, 66%, 54%);
+}
+
+.was-validated .form-control:invalid~.invalid-feedback,
+.was-validated .form-check-input:invalid~.invalid-feedback {
+    display: block;
+}
+
+.btn-primary {
+    background-color: hsl(169, 82%, 27%);
+    border-color: hsl(169, 82%, 27%);
+}
+
+.btn-primary:hover {
+    background-color: hsl(169, 82%, 20%);
+    border-color: hsl(169, 82%, 20%);
+}
+
+.form-control{
+    cursor: pointer;
+}
+
+.form-control:focus,
+.form-check-input:focus {
+    border-color: hsl(164, 38%, 57%);
+    box-shadow: 0 0 1px hsl(169, 82%, 27%);
+    cursor: auto;
+}
+
+.query-option .btn {
+    text-align: center;
+    border: 1px solid hsl(186, 15%, 59%);
+    border-radius: 4px;
+    padding: 10px;
+    color: hsl(187, 24%, 22%);
+    background-color: hsl(0, 0%, 100%);
+}
+
+.query-option .btn-check:checked+.btn {
+    background-color: hsl(169, 82%, 27%);
+    border-color: hsl(169, 82%, 27%);
+    color: hsl(0, 0%, 100%);
+}
+
+.autor {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: hsl(186, 15%, 35%); /* Color gris suave */
+}
+
+.autor a {
+    color: hsl(169, 82%, 27%); /* Color verde igual al botón */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.autor a:hover {
+    color: hsl(169, 82%, 20%); /* Un tono más oscuro al pasar el mouse */
+}
+
+/* Estilos para el mensaje de error */
+.invalid-feedback {
+    display: none; /* Ocultar por defecto */
+    color: hsl(0, 66%, 54%); /* Color rojo para el mensaje de error */
+    font-size: 14px;
+    margin-top: 8px; /* Espacio entre los radio buttons y el mensaje de error */
+}
+
+/* Mostrar el mensaje de error cuando el campo no es válido */
+.was-validated .form-check-input1:invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Estilos para el contenedor de alertas */
+#alert-container {
+    position: fixed; /* Fijar el contenedor en la pantalla */
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar el centro exacto */
+    z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+    width: 90%; /* Ancho del contenedor */
+    max-width: 500px; /* Ancho máximo */
+    display: none; /* Ocultar por defecto */
+}
