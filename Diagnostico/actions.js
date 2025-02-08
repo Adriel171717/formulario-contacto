@@ -13,6 +13,13 @@ document.getElementById('contactForm').addEventListener('submit', function (even
         } else {
             input.classList.remove('is-invalid'); // Marcar el campo como válido
         }
+
+        // Añadir un listener para corregir el estado de error cuando el usuario modifique el campo
+        input.addEventListener('input', function () {
+            if (input.checkValidity()) {
+                input.classList.remove('is-invalid'); // Quitar la clase de error cuando sea válido
+            }
+        });
     });
 
     if (!isValid) {
@@ -53,10 +60,10 @@ document.getElementById('contactForm').addEventListener('submit', function (even
             form.reset(); // Limpiar el formulario después de un envío exitoso
         }
 
-        // Ocultar el mensaje después de 5 segundos
+        // Ocultar el mensaje después de 3 segundos
         setTimeout(function () {
             alertContainer.style.display = 'none';
-        }, 5000); // 5000 milisegundos = 5 segundos
+        }, 3000);
     })
     .catch(error => {
         // Mostrar mensaje de error en caso de fallo en la solicitud
@@ -71,12 +78,66 @@ document.getElementById('contactForm').addEventListener('submit', function (even
             </div>
         `;
 
-        // Ocultar el mensaje después de 5 segundos
+        // Ocultar el mensaje después de 3 segundos
         setTimeout(function () {
             alertContainer.style.display = 'none';
-        }, 5000); // 5000 milisegundos = 5 segundos
+        }, 3000);
     });
 });
+
+
+// Función para cargar los datos en la tabla
+function loadData() {
+    fetch('get_data.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json(); // Convertir la respuesta a JSON
+        })
+        .then(data => {
+            console.log(data); // Verifica que los datos son correctos
+            const tableBody = document.getElementById('data-table-body');
+            tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="8">No se encontraron registros</td></tr>';
+            } else {
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.id}</td>
+                        <td>${row.firstName}</td>
+                        <td>${row.lastName}</td>
+                        <td>${row.email}</td>
+                        <td>${row.queryType}</td>
+                        <td>${row.message}</td>
+                        <td>${row.consent ? 'Sí' : 'No'}</td>
+                        <td>${row.submitted_at}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar los datos:', error);
+            const tableBody = document.getElementById('data-table-body');
+            tableBody.innerHTML = '<tr><td colspan="8">Error al cargar los datos. Inténtalo de nuevo.</td></tr>';
+        });
+}
+
+// Cargar los datos cuando se abre el acordeón
+document.querySelector('.accordion-button').addEventListener('click', function () {
+    loadData();  // Cargar los datos solo cuando se abre el acordeón
+});
+
+// Cargar los datos cuando la página esté lista
+document.addEventListener('DOMContentLoaded', function () {
+    loadData();
+});
+
+// Actualizar los datos cada 5 segundos (opcional)
+setInterval(loadData, 5000);
 
 /*
 // Bootstrap form validation

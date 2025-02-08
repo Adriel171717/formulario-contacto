@@ -185,3 +185,74 @@ h1 {
     max-width: 500px; /* Ancho máximo */
     display: none; /* Ocultar por defecto */
 }
+
+/* Estilo del acordeón */
+.accordion-flush .accordion-item {
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espacio entre elementos */
+    max-width: 1000px; /* Reducir el ancho */
+    margin: 0 auto; /* Centrar el acordeón */
+    padding: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 20px;
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* Estilo del botón del acordeón */
+.accordion-flush .accordion-button {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    color: #333; /* Color del texto */
+    font-weight: 600; /* Negrita */
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.accordion-flush .accordion-button:hover {
+    background-color: rgba(200, 200, 200, 0.5); /* Color al pasar el cursor */
+}
+
+/* Estilo del cuerpo del acordeón */
+.accordion-flush .accordion-body {
+    background-color: #f5f5f5; /* Fondo claro */
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra interna */
+}
+
+/* Estilo de la tabla */
+.accordion-body .table {
+    margin-top: 15px;
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto; /* Permitir que el contenido ajuste las columnas */
+}
+
+/* Estilo de las celdas */
+.accordion-body .table th, .accordion-body .table td {
+    padding: 10px;
+    text-align: left; /* Alinear el texto a la izquierda para mejor lectura */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Bordes ligeros */
+    word-wrap: break-word; /* Permitir que el texto se ajuste en varias líneas */
+    white-space: normal; /* Permitir la ruptura de líneas */
+}
+
+/* Estilo del encabezado de la tabla */
+.accordion-body .table thead {
+    background-color: #343a40;
+    color: #fff;
+}
+
+/* Estilo de las filas impares para un mejor contraste */
+.accordion-body .table tbody tr:nth-child(odd) {
+    background-color: #e9ecef;
+}
+
+/* Ajuste de columnas */
+.accordion-body .table th, .accordion-body .table td {
+    text-overflow: clip; /* Evitar que el texto se corte */
+    overflow: visible; /* Mostrar todo el contenido sin cortar */
+}
